@@ -1,19 +1,26 @@
-for i=1:3:length(M)
+for i=1:4:length(M)
     One = 'tme';
     Two = num2str(M(i,1));
     Three = '/';
     Four = 'Right/';
-    Five = '0';
-    Six = num2str(M(i,2));
+    Six = M(i,2);
+    if(Six>9999)
+        Five = '0';
+    elseif(Six>999)
+        Five = '00';
+    else
+        Five = '000';
+    end
+    Six = num2str(Six);
     Seven = '-R.png';
     image = strcat(One,Two,Three,Four,Five,Six,Seven);
     image_name = strcat(Five,Six,Seven);
     im= imread(image);
     Im = demosaic(im,'bggr');
-    xmin = M(3,3);
-    ymin = M(3,4);
-    xmax = M(3,5);
-    ymax = M(3,6);
+    xmin = M(i,3);
+    ymin = M(i,4);
+    xmax = M(i,5);
+    ymax = M(i,6);
     width = xmax - xmin;
     height = ymax -ymin;
     image_segment = imcrop(Im,[xmin,ymin,width,height]);
