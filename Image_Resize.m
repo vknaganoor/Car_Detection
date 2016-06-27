@@ -22,6 +22,6 @@ count=1;
      fname=sprintf('im_%d.jpg',count);
      %cd('Y:\selfie\');
      imwrite(b,fname);
-     
+    
      end
 %      figure;imshow(Iout1);
