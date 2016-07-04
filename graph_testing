@@ -1,0 +1,61 @@
+"""Testing of the graph outputing code from cifar10_train_graph.py
+"""
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+import os.path
+import re
+import sys
+import tarfile
+
+import numpy as np
+from six.moves import urllib
+import tensorflow as tf
+
+FLAGS = tf.app.flags.FLAGS
+
+tf.app.flags.DEFINE_string(
+    'model_dir', '/home/vivalab/Dhanvin_Graph',
+    """Path to output_graph.pb, """)
+
+
+def create_graph():
+  """Creates a graph from saved GraphDef file and returns a saver."""
+  # Creates graph from saved graph_def.pb.
+  with tf.gfile.FastGFile(os.path.join(
+      FLAGS.model_dir, 'cifar10_graph_10000steps.pb'), 'rb') as f:
+    graph_def = tf.GraphDef()
+    graph_def.ParseFromString(f.read())
+    _ = tf.import_graph_def(graph_def, name='')
+
+
+def add_summaries():
+  """Creates a graph from saved Graph and adds summaries to see
+	shape of the graph
+
+  Args:
+    Nothing
+
+  Returns:
+    Nothing
+  """
+  # Creates graph from saved GraphDef.
+  create_graph()
+
+  # Add a summary: all we care about here is the shape of the graph
+  summary_op = tf.merge_all_summaries()
+
+  with tf.Session() as sess:
+    # Summary writer
+    writer = tf.train.SummaryWriter("Graph_folder3/", sess.graph)
+    writer.flush()
+
+
+def main(_):
+  add_summaries()
+
+
+if __name__ == '__main__':
+  tf.app.run()
