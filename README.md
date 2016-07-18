@@ -4,7 +4,7 @@ It consists of the codes for Automatic Car Detection for Driver Assistance using
 ##Data Extraction
 ###Input
 Negatives_Extract.m is a MATLAB file which extract a random patches not containing the vehicle </br>
-Positives_Extract.m is a MATLAB code that extracts the positive patches containing the vehicle that 
+Positives_Extract.m is a MATLAB code that extracts the positive patches containing the vehicle from the data given in the 
 
 
 ##Annotation
