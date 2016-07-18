@@ -4,13 +4,12 @@ It consists of the codes for Automatic Car Detection for Driver Assistance using
 ##Data Extraction
 ###Input
 The data being used is the TME vehicular classification dataset.</br>
-Negatives_Extract.m is a MATLAB code which extracts random patches not containing the vehicle.</br>
-Positives_Extract.m is a MATLAB code that extracts the positive patches containing the vehicle from the annoted data created from the laser scanner.
+Negatives_Extract.m is a the code which extracts random patches not containing the vehicle.</br>
+Positives_Extract.m is a the code that extracts the positive patches containing the vehicle from the annoted data created from the laser scanner.
 
 ##Retraining
 Retrain.py is the modified version of the retraining code outsourced by Google.</br>
-Note: Modify it based on the
-It outputs the 
+It outputs the the tensorflow graph after fine-tuning the inception Network 
 
 ##Annotation
 ####Classify.py 
